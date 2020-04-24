@@ -1,0 +1,75 @@
+{
+  "GlobalConfiguration": {},
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "rabbitmq",
+          "Port": 15672
+        }
+      ],
+      "UpstreamPathTemplate": "/rabbitmq/{everything}"
+    },
+    {
+      "DownstreamPathTemplate": "/movies",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "movies",
+          "Port": 80
+        }
+      ],
+      "SwaggerKey": "movies",
+      "UpstreamPathTemplate": "/api/v1/movies"
+    },
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "movies",
+          "Port": 80
+        }
+      ],
+      "SwaggerKey": "movies",
+      "UpstreamPathTemplate": "/api/v1/movies/{everything}"
+    },
+
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reviews",
+          "Port": 80
+        }
+      ],
+      "SwaggerKey": "reviews",
+      "UpstreamPathTemplate": "/api/v1/reviews/{everything}"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "movies",
+      "Config": [
+        {
+          "Name": "Movies API",
+          "Version": "v1",
+          "Url": "http://movies/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "reviews",
+      "Config": [
+        {
+          "Name": "Reviews API",
+          "Version": "v1",
+          "Url": "http://reviews/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
+}

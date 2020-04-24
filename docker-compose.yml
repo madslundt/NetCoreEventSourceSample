@@ -1,0 +1,87 @@
+version: '3.4'
+
+services:
+
+  #### Services Container ####
+  movies:
+    image: movies
+    build:
+      context: .
+      dockerfile: MicroServices/Movies/Movies.Service/Dockerfile
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    - ES_CONNECTION=Server=database_sql;Database=event_sourcing;User Id=sa;Password=Pass@word
+    - DB_CONNECTION=Server=database_sql;Database=movies;User Id=sa;Password=Pass@word
+    - DISTRIBUTED_CACHE=distributed_cache
+    - RABBIT_CONNECTION=amqp://test:test@rabbitmq:5672
+    depends_on:
+    - database_sql  
+    - eventstore
+    - rabbitmq
+
+    
+  reviews:
+    image: reviews
+    build:
+      context: .
+      dockerfile: MicroServices/Reviews/Reviews.Service/Dockerfile
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    - ES_CONNECTION=Server=database_sql;Database=event_sourcing;User Id=sa;Password=Pass@word
+    - DB_CONNECTION=Server=database_sql;Database=reviews;User Id=sa;Password=Pass@word
+    - DISTRIBUTED_CACHE=distributed_cache
+    - RABBIT_CONNECTION=amqp://test:test@rabbitmq:5672
+    depends_on:
+    - database_sql  
+    - eventstore
+    - rabbitmq
+
+  #### Service Gateway Container ####
+  servicegateway:
+    image: servicegateway
+    build:
+      context: .
+      dockerfile: Gateway/ServicesGateway/Dockerfile
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+    - reviews
+    - movies
+    - rabbitmq
+    ports:
+    - 6543:80
+
+
+  #### RabbitMQ Container ####
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "test"
+      RABBITMQ_DEFAULT_PASS: "test"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+    - 15672:15672
+    - 5672:5672
+
+  #### Read store Container ####
+  database_sql:
+    image: microsoft/mssql-server-linux:latest
+    environment:
+    - MSSQL_SA_PASSWORD=Pass@word
+    - ACCEPT_EULA=Y
+    - MSSQL_PID=Express
+    ports:
+    - 5553:1433
+
+  #### Event store Container ####
+  eventstore:
+    image: eventstore
+    build:
+      context: .
+      dockerfile: Apps/EventStore.App/Dockerfile
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    - ES_CONNECTION=Server=database_sql;Database=event_sourcing;User Id=sa;Password=Pass@word
+    depends_on:
+    - database_sql

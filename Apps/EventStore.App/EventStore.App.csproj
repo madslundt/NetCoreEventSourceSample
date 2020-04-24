@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EventFlow" Version="0.77.4077" />
+    <PackageReference Include="EventFlow.AspNetCore" Version="0.77.4077" />
+    <PackageReference Include="EventFlow.DependencyInjection" Version="0.77.4077" />
+    <PackageReference Include="EventFlow.EntityFramework" Version="0.77.4077" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructures\EventStore.Middleware\EventStore.Middleware.csproj" />
+    <ProjectReference Include="..\..\Infrastructures\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

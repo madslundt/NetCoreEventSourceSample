@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Business\Movies\Snapshots\" />
+    <Folder Include="Business\Reviews\Commands\" />
+    <Folder Include="Business\Reviews\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EventFlow" Version="0.77.4077" />
+    <PackageReference Include="EventFlow.EntityFramework" Version="0.77.4077" />
+    <PackageReference Include="FluentValidation" Version="8.6.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructures\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
