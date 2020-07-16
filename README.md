@@ -7,7 +7,7 @@ One or more reviews can be added to a movie but does not appear until the status
 Reviews can later be deleted.
 
 # Code base
-The current solution is heavily depending on Eventflow which gives the possibility to use CQRS with ES.
+The current solution is heavily depending on Eventflow which gives the option to use CQRS with ES.
 
 [ Image of solution ]
 
@@ -59,7 +59,3 @@ Domain contain two root folders:
  - Entity
 
 **Module** makes sure to bootstrap the domain in Eventflow.
-
-# WIP
- - Authentication
- - GraphQL
