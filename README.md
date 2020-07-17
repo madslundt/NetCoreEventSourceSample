@@ -40,7 +40,7 @@ Each micro service contain two projects:
  - ReadStore
  - Service
 
-**ReadStore** being the read model for the service. This is used to query through.
+**ReadStore** being the read model for the service.
 
 **Service** being the service API.
 
@@ -51,8 +51,6 @@ Domain contain two root folders:
 
 **Business** contain elements for each domain, such as:
  - Events
- - Queries
- - Commands
  - Snapshots
  - Aggregate
  - AggregateState
