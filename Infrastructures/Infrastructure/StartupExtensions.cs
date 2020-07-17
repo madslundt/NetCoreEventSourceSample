@@ -33,9 +33,10 @@ namespace Infrastructure
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(swaggerUIOptions);
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(swaggerUIOptions);
 
             app.UseRouting();
             app.UseEndpoints(endpoints =>

@@ -8,6 +8,7 @@ using EventFlow.Extensions;
 using EventFlow.RabbitMQ;
 using EventFlow.RabbitMQ.Extensions;
 using EventStore.Middleware.Module;
+using Infrastructure;
 using Infrastructure.Configurations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,14 +36,11 @@ namespace Reviews.Service
         {
             var env = EnvironmentConfiguration.Bind(_configuration);
 
-            services
-                .AddSingleton(env)
-                .AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Movies API", Version = "v1" }))
-                .AddMvc();
-
-            services
-                .AddControllers()
-                .AddNewtonsoftJson();
+            services.ConfigureServices(env, new OpenApiInfo
+            {
+                Title = "Reviews API",
+                Version = "v1"
+            });
 
             EventFlowOptions.New
                 .UseServiceCollection(services)
@@ -65,18 +63,7 @@ namespace Reviews.Service
                 dbContext.CreateContext();
             }
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Movies API V1"); });
-            }
-
-            app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.Configure(env, c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Reviews API V1"); });
         }
     }
 }

@@ -8,7 +8,6 @@ using EventFlow.Extensions;
 using EventFlow.RabbitMQ;
 using EventFlow.RabbitMQ.Extensions;
 using EventStore.Middleware.Module;
-using FluentValidation.AspNetCore;
 using Infrastructure;
 using Infrastructure.Configurations;
 using Microsoft.AspNetCore.Builder;
