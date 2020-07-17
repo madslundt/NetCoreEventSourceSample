@@ -31,7 +31,7 @@ Infrastructures contain two projects:
 
 **Eventstore middleware**
 
-**Infrastructure** is a projects containing helpers, configuration, etc. to ease integration of new services.
+**Infrastructure** is a project containing helpers, configuration, etc. to ease integration of new services.
 
 ## MicroServices
 Micro services directory contain all services needed to run in the API.
