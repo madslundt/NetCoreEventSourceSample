@@ -30,7 +30,7 @@ namespace Movies.Service.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateMovie([FromBody] CreateMovieViewModel model, CancellationToken cancellationToken)
         {
-            var result = await PublishAsync(new CreateMovie.Command(model.Title, model.Year), cancellationToken);
+            var result = await PublishAsync(new CreateMovieCommand.Command(model.Title, model.Year), cancellationToken);
             var id = result.AggregateRoot.GetIdentity();
 
             return Ok(new

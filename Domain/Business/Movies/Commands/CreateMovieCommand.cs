@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Business.Movies.Commands
 {
-    public class CreateMovie
+    public class CreateMovieCommand
     {
         public class Command : Command<MovieAggregate, MovieId, CommandReturnResult>
         {

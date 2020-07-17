@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EventFlow" Version="0.77.4077" />
-    <PackageReference Include="EventFlow.EntityFramework" Version="0.77.4077" />
+    <PackageReference Include="EventFlow" Version="0.79.4216" />
+    <PackageReference Include="EventFlow.EntityFramework" Version="0.79.4216" />
     <PackageReference Include="FluentValidation" Version="8.6.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.3.2" />
   </ItemGroup>

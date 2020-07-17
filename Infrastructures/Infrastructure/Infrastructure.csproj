@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EventFlow" Version="0.77.4077" />
-    <PackageReference Include="EventFlow.EntityFramework" Version="0.77.4077" />
-    <PackageReference Include="EventFlow.RabbitMQ" Version="0.77.4077" />
+    <PackageReference Include="EventFlow" Version="0.79.4216" />
+    <PackageReference Include="EventFlow.EntityFramework" Version="0.79.4216" />
+    <PackageReference Include="EventFlow.RabbitMQ" Version="0.79.4216" />
     <PackageReference Include="FluentValidation" Version="8.6.2" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.3" />
