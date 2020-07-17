@@ -1,11 +1,11 @@
-﻿using EventFlow.Aggregates.ExecutionResults;
+﻿using Domain.Business.Movies;
 using EventFlow.Commands;
 using FluentValidation;
 using Infrastructure.Commands;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Domain.Business.Movies.Commands
+namespace Movies.Service.Movies.Commands
 {
     public class CreateMovieCommand
     {

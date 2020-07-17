@@ -59,7 +59,7 @@ namespace Infrastructure.Controller
         private void ValidateRequest<TRequest>(TRequest request)
         {
             var validator = _validationFactory.GetValidator(request.GetType());
-            var result = validator?.Validate(request);
+            var result = validator?.Validate(new ValidationContext<TRequest>(request));
 
             if (result != null && !result.IsValid)
             {

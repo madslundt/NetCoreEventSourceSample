@@ -13,13 +13,13 @@ namespace Infrastructure
 {
     public static class StartupExtensions
     {
-        public static IServiceCollection ConfigureServices(this IServiceCollection services, EnvironmentConfiguration env, OpenApiInfo apiInfo)
+        public static IServiceCollection ConfigureServices(this IServiceCollection services, EnvironmentConfiguration env, Type type, OpenApiInfo apiInfo)
         {
             services
                 .AddSingleton(env)
                 .AddSwaggerGen(c => c.SwaggerDoc(apiInfo.Version, apiInfo))
                 .AddMvc(opt => { opt.Filters.Add(typeof(ExceptionFilter)); })
-                .AddFluentValidation();
+                .AddFluentValidation(cfg => { cfg.RegisterValidatorsFromAssemblyContaining(type); });
 
             services
                 .AddControllers()

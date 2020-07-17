@@ -36,7 +36,7 @@ namespace Movies.Service
         {
             var env = EnvironmentConfiguration.Bind(_configuration);
 
-            services.ConfigureServices(env, new OpenApiInfo
+            services.ConfigureServices(env, typeof(Startup), new OpenApiInfo
             {
                 Title = "Movies API",
                 Version = "v1"

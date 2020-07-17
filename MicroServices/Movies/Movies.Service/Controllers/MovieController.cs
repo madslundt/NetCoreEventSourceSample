@@ -1,9 +1,9 @@
-﻿using Domain.Business.Movies.Commands;
-using EventFlow;
+﻿using EventFlow;
 using EventFlow.Queries;
 using FluentValidation;
 using Infrastructure.Controller;
 using Microsoft.AspNetCore.Mvc;
+using Movies.Service.Movies.Commands;
 using Movies.Service.Queries;
 using Movies.Service.VIewModels;
 using System;
