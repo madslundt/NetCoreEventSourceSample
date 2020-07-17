@@ -9,7 +9,7 @@ Reviews can later be deleted.
 # Code base
 The current solution is heavily depending on Eventflow which gives the option to use CQRS with ES.
 
-[ Image of solution ]
+![Architecture](diagram.png "Archivecture")
 
 ## Apps
 Apps contain two projects:
